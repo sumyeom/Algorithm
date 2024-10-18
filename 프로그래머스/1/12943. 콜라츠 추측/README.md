@@ -2,6 +2,10 @@
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12943) 
 
+#### ⎝⍥⎠⎝⍥⎠⎝⍥⎠
+temp를 int선언했더니 3번 테스트 케이스에서 통과를 못했는데 중간에 곱하기가 있어서 범위를 벗어나게 돼서 그런다고 한다.
+long으로 타입을 수정했더니 잘 통과되었다. 타입이 아주 중요하군....
+
 ### 성능 요약
 
 메모리: 74.3 MB, 시간: 8.64 ms
@@ -72,6 +76,5 @@
 <ul>
 <li>주어진 수가 1인 경우에 대한 조건 추가</li>
 </ul>
-
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
