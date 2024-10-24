@@ -1,23 +1,13 @@
 class Solution {
     public int solution(int n, int m, int[] section) {
-        int answer=0;
-        boolean[] flag = new boolean[n+1];
-        boolean change = false;
+        int answer = 0;
+        int position = 0;
         for(int i=0;i<section.length;i++){
-            for(int j=section[i];j<section[i]+m;j++){
-                if(j>n) {
-                    break;
-                }
-                if(flag[j] == true){
-                    change = true;
-                    break;
-                }
-                flag[j] = true;
+            if(section[i] <= position) {
+                continue;
             }
-            if(change == false){
-                answer++;
-            }
-            change = false;
+            position = section[i] + m - 1;
+            answer++;
         }
         return answer;
     }
