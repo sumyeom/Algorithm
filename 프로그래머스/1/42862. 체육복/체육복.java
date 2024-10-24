@@ -16,29 +16,13 @@ class Solution {
         for(int i=0;i<n;i++){
             if(clothes[i]==0){
                 //앞에 볼라고했는데 첫번째인자이면?
-                if(i-1<0){
-                    //뒤에꺼 확인
-                    if(clothes[i+1]==2){
-                        clothes[i] = 1;
-                        clothes[i+1] = 1;
-                    }
+                if(i>0 && clothes[i-1] == 2){
+                    clothes[i]++;
+                    clothes[i-1]--;
                 }
-                else if(i+1 == n){
-                    if(clothes[i-1]==2){
-                        clothes[i] = 1;
-                        clothes[i-1] = 1;
-                    }
-                }else{
-                    if(clothes[i-1]==2){
-                        clothes[i] = 1;
-                        clothes[i-1] = 1;
-                    }
-                    else if(clothes[i+1]==2){
-                        clothes[i] = 1;
-                        clothes[i+1] = 1;
-                    }else if(clothes[i]==2){
-                        clothes[i] = 1;
-                    }
+                else if(i < n - 1 && clothes[i+1] == 2){
+                    clothes[i]++;
+                    clothes[i+1]--;
                 }
             }
         }
