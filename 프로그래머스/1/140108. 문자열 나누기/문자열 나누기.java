@@ -7,13 +7,12 @@ class Solution {
         int cntS= 0;
         int cntA = 0;
         int index = 0;
-        ArrayList<String> list = new ArrayList<>();
         start_s = s.charAt(index);
         cntS++;
         while(true){
             index++;
             if(index>=s.length()-1 && s.length()>=1){
-                list.add(s);
+                answer++;
                 break;
             }
             if(start_s == s.charAt(index)){
@@ -22,7 +21,7 @@ class Solution {
                 cntA++;
             }
             if(cntS == cntA){
-                list.add(s.substring(0,index+1));
+                answer++;
                 s = s.substring(index+1,s.length());
                 cntA=0;
                 index=0;
@@ -31,16 +30,12 @@ class Solution {
                 cntS=1;
             }
             else{
-                if(index == s.length()){
-                    list.add(s);
-                }
                 if(index>=s.length() && s.length()>=1){
-                    list.add(s);
+                    answer++;
                     break;
                 }
             }
         }
-        answer = list.size();
         return answer;
     }
 }
