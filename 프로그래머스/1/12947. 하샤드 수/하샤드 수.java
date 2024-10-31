@@ -1,12 +1,15 @@
+import java.util.*;
 class Solution {
     public boolean solution(int x) {
-        boolean answer = true;
-        String str = Integer.toString(x);
-        int sum=0;
-        for(int i = 0;i<str.length();i++){
-            sum += Character.getNumericValue(str.charAt(i));
+        boolean answer = false;
+        String numStr = Integer.toString(x);
+        int sum = 0;
+        for(char ch : numStr.toCharArray()){
+            sum += Character.getNumericValue(ch);
         }
-        if(x % sum != 0) answer = false;
+        if(x % sum == 0){
+            answer = true;
+        }
         return answer;
     }
 }
