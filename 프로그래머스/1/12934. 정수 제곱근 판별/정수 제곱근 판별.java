@@ -1,18 +1,13 @@
 class Solution {
     public long solution(long n) {
-        long answer = 0;
-        long temp = 0;
-        for(int i=1;i<=n;i++){
-            if(n / i == i && n % i ==0) {
-                temp = i;
+        long answer = -1;
+        for(long i=1;i<=n;i++){
+            if(Math.sqrt(n)==i) {
+                answer = (i+1) * (i+1);
                 break;
             }
-            if(i == n){
-                temp = -1;
-            }
         }
-        if(temp == -1) answer = -1;
-        else answer = (temp+1) * (temp+1);
+        
         return answer;
     }
 }
