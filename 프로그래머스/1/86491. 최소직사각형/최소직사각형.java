@@ -1,25 +1,21 @@
+import java.util.*;
 class Solution {
     public int solution(int[][] sizes) {
         int answer = 0;
-        System.out.println(sizes.length);
+        List<Integer> list1 = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
         for(int i=0;i<sizes.length;i++){
-            if(sizes[i][0]<sizes[i][1]){
+            if(sizes[i][0] < sizes[i][1]){
                 int temp = sizes[i][0];
                 sizes[i][0] = sizes[i][1];
                 sizes[i][1] = temp;
             }
+            list1.add(sizes[i][0]);
+            list2.add(sizes[i][1]);
         }
-        int maxW=sizes[0][0];
-        int maxH=sizes[0][1];
-        for(int i=0;i<sizes.length;i++){
-            if(maxW < sizes[i][0]){
-                maxW = sizes[i][0];
-            }
-            if(maxH < sizes[i][1]){
-                maxH = sizes[i][1];
-            }
-        }
-        answer = maxW * maxH;
+        Collections.sort(list1);
+        Collections.sort(list2);
+        answer = list1.get(list1.size()-1) * list2.get(list2.size()-1);
         return answer;
     }
 }
