@@ -1,26 +1,26 @@
 import java.util.*;
 class Solution {
     public int solution(String s) {
+        int answer = 0;
         String answerStr = s;
-        LinkedHashMap<String, Integer> numberMap = new LinkedHashMap<>();
-        numberMap.put("zero",0);
-        numberMap.put("one",1);
-        numberMap.put("two",2);
-        numberMap.put("three",3);
-        numberMap.put("four",4);
-        numberMap.put("five",5);
-        numberMap.put("six",6);
-        numberMap.put("seven",7);
-        numberMap.put("eight",8);
-        numberMap.put("nine",9);
-        int indexBegin=0;
-        int indexEnd=0;
-        for(String key : numberMap.keySet()){
-            if(answerStr.contains(key)){
-                answerStr = answerStr.replace(key, String.valueOf(numberMap.get(key)));
-            }
-        }
+        Map<String, Integer> map = new HashMap<>();
+        map.put("zero",0);
+        map.put("one",1);
+        map.put("two",2);
+        map.put("three",3);
+        map.put("four",4);
+        map.put("five",5);
+        map.put("six",6);
+        map.put("seven",7);
+        map.put("eight",8);
+        map.put("nine",9);
         
+        for(String key : map.keySet()){
+            if(answerStr.contains(key)){
+                answerStr = answerStr.replace(key, String.valueOf(map.get(key)));
+            }
+            
+        }
         return Integer.parseInt(answerStr);
     }
 }
