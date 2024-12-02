@@ -14,6 +14,7 @@ class Solution {
                 if(i<=citations[j]){
                     cnt++;
                 }
+                if(cnt >= i) break;
             }
             if(cnt >= i){
                 h = Math.max(h,i);
