@@ -1,35 +1,28 @@
 import java.util.*;
-
 class Solution {
     public int[] solution(String[] keymap, String[] targets) {
         int[] answer = new int[targets.length];
-        ArrayList<Integer> list = new ArrayList<>();
+        Map<Character, Integer> map = new HashMap<>();
+        for(int i =0;i<keymap.length;i++){
+            for(int j=0;j<keymap[i].length();j++){
+                char key = keymap[i].charAt(j);
+                map.put(key, Math.min(map.getOrDefault(key, Integer.MAX_VALUE), j + 1));
+            }
+        }
 
         for(int i=0;i<targets.length;i++){
-            int resultTarget = 0;
-            for(int j=0;j<targets[i].length();j++){
-                for(int k=0;k<keymap.length;k++){
-                    list.add(keymap[k].indexOf(targets[i].charAt(j)));
-                }
-                int minusCnt = 0;
-                for(int k=0;k<list.size();k++){
-                    if(list.get(k) == -1){
-                        minusCnt++;
-                    }
-                }
-                if(minusCnt == list.size()){
-                    resultTarget = -1;
-                    list.clear();
-                    break;
+            int result = 0;
+            String s = targets[i];
+
+            for(char ch : s.toCharArray()){
+                if(map.containsKey(ch)){
+                    result += map.get(ch);
                 }else{
-                    list.removeAll(Arrays.asList(Integer.valueOf(-1)));
-                    Collections.sort(list);
-                    
-                    resultTarget += list.get(0)+1;
+                    result = -1;
+                    break;
                 }
-                list.clear();
             }
-            answer[i] = resultTarget;
+            answer[i] = result;
         }
         return answer;
     }
