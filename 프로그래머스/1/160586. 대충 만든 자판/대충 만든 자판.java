@@ -2,8 +2,6 @@ import java.util.*;
 
 class Solution {
     public int[] solution(String[] keymap, String[] targets) {
-        String[] keymap1 = {"A", "A", "B"};
-        String[] targets1 = {"B"};
         int[] answer = new int[targets.length];
         ArrayList<Integer> list = new ArrayList<>();
 
@@ -24,7 +22,7 @@ class Solution {
                     list.clear();
                     break;
                 }else{
-                    while (list.remove(Integer.valueOf(-1))) {        };
+                    list.removeAll(Arrays.asList(Integer.valueOf(-1)));
                     Collections.sort(list);
                     
                     resultTarget += list.get(0)+1;
