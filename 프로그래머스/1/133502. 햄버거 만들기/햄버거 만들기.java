@@ -1,34 +1,27 @@
 import java.util.*;
 class Solution {
     public int solution(int[] ingredient) {
-        int answer = 0;
-
-        int[] orders = {1,2,3,1};
-        int index = 0;
+int answer = 0;
+        int[] orders = {1,3,2,1};
         Stack<Integer> hamburger = new Stack<>();
-        Stack<Integer> temp = new Stack<>();
-        for(int i=0;i<ingredient.length;i++){
-            hamburger.push(ingredient[i]);
+        for(int in : ingredient) {
+            hamburger.push(in);
             boolean flag = false;
-            if(hamburger.size()>=4){
-                for(int j=orders.length-1;j>=0;j--){
-                    int number = hamburger.pop();
-                    temp.push(number);
-                    if(orders[j] == number){
+            if(hamburger.size() >=4) {
+                for(int j=0;j<4;j++){
+                    if(hamburger.get(hamburger.size()-j-1) == orders[j]){
                         flag = true;
-                    } else{
+                    }else{
                         flag = false;
                         break;
                     }
                 }
-                if(flag == true){
-                    answer++;
-                }else{
-                    while(!temp.empty()){
-                        hamburger.push(temp.pop());
-                    }
+            }
+            if(flag == true){
+                answer++;
+                for(int j=0;j<4;j++){
+                    hamburger.pop();
                 }
-                temp.clear();
             }
         }
         return answer;
