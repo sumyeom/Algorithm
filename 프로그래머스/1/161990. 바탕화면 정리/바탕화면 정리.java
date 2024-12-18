@@ -12,6 +12,7 @@ class Solution {
                     minY = j;
                     maxX = i;
                     maxY = j;
+                    break;
                 }
             }
         }
