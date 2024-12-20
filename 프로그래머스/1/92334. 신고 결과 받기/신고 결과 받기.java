@@ -1,47 +1,52 @@
-/*
-각 유저는 한번에 한명의 유저를 신고할 수 있음
-신고 횟수에 제한은 없어서 서로 다른 유저를 신고할 수 있다.
-한 유저를 여러번 신고는 할수있지만 동일한 유저에 대한 신고 횟수는 1회로 처리하게됨.
-k번 이상 신고된 유저는 정지 -> 해당 유저를 신고한 사람한테 알림이 간다.
-마지막에 날림
-*/
 import java.util.*;
 class Solution {
     public int[] solution(String[] id_list, String[] report, int k) {
-                int[] answer = new int[id_list.length];
-        // 신고당한 사람, 신고한 사람 리스트
-        Map<String, List<String>> idPeople = new HashMap<>();
-        // 신고 당한 사람, 신고 당한 횟수 map
-        Map<String, Integer> reportPeople = new HashMap<>();
+        int[] answer = new int[id_list.length];
+        ArrayList<User> users = new ArrayList<>();
+        HashMap<String,Integer> suspendedList = new HashMap<>(); //<이름>
+        HashMap<String,Integer> idIdx = new HashMap<String,Integer>(); // <이름, 해당 이름의 User 클래스 idx>
+        int idx = 0;
 
-        // report 돌면서 저장
-        for(int i=0;i<report.length;i++){
-            String fromPeople = report[i].split(" ")[0];
-            String toPeople = report[i].split(" ")[1];
-            List<String> fromPeopleList = idPeople.get(toPeople) == null ? new ArrayList<>() : idPeople.get(toPeople);
-            //
-            if(!fromPeopleList.contains(fromPeople)) {
-                fromPeopleList.add(fromPeople);
-                reportPeople.put(toPeople, reportPeople.getOrDefault(toPeople, 0) + 1);
-            }
-            idPeople.put(toPeople, fromPeopleList);
-
+        for(String name : id_list) {
+            idIdx.put(name,idx++);
+            users.add(new User(name));
         }
 
-        //
-        for(String fromPeople : idPeople.keySet()){
-            int num = reportPeople.get(fromPeople);
-            if(num >= k) {// k번이상인지 확인
-                List<String> list = idPeople.get(fromPeople);
-                for(int i=0;i<id_list.length;i++){
-                    for(int j=0;j<list.size();j++){
-                        if(id_list[i].equals(list.get(j))){
-                            answer[i]++;
-                        }
-                    }
-                }
-            }
+        for(String re : report){
+            String[] str = re.split(" ");
+            //suspendedCount.put(str[0], suspendedCount.getOrDefault(str[0],0)+1);
+            users.get( idIdx.get(str[0])).reportList.add(str[1]);
+            users.get( idIdx.get(str[1])).reportedList.add(str[0]);
         }
+
+        for(User user : users){
+            if(user.reportedList.size() >= k)
+                suspendedList.put(user.name,1);
+        }
+
+         for(User user : users){
+             for(String nameReport : user.reportList){
+                 if(suspendedList.get(nameReport) != null){
+                     answer[idIdx.get(user.name)]++;
+                 }
+
+             }
+        }
+
+
+
+
         return answer;
+    }
+}
+
+class User{
+    String name;
+    HashSet<String> reportList;
+    HashSet<String> reportedList;
+    public User(String name){
+        this.name = name;
+        reportList = new HashSet<>();
+        reportedList = new HashSet<>();
     }
 }
