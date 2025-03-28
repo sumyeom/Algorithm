@@ -1,36 +1,31 @@
-import java.util.*;
-class User{
-    public int k;
-    public int cnt;
-    public boolean[] visited;
-    public User(int k, int cnt, boolean[] visited){
-        this.k = k;
-        this.cnt = cnt;
-        this.visited = visited;
-    }
-}
+// 피로도 시스템(0 이상의 정수)
+// 각 던전마다 탐험을 시작하기 위해 필요한 "최소 필요 피로도"
+// 던전 탐험을 마쳤을 때 소모되는 "소모 피로도"
+// 하루에 한번 탐험할 수 있는 던전 있음
+// 한 유저가 오늘 이 던전들을 최대한 많이 탐험하려고함
+// 유저의 현재 피로도 k와 각 던전별 "최소 필요 피로도", "소모 피로도" 담긴 dungeons
+// 유저가 탐험할 수 있는 최대 던전 수
 class Solution {
+    static int answer = -1;
+    static boolean[] visited;
     public int solution(int k, int[][] dungeons) {
-        int answer = -1;
-        Queue<User> queue = new LinkedList<>();
-        boolean[] visited = new boolean[dungeons.length];
+        // 던전 방문을 체크할 배열
+        visited = new boolean[dungeons.length];
 
-        int cnt = 0;
-        queue.add(new User(k, cnt, visited));
-
-        while(!queue.isEmpty()){
-            User user = queue.poll();
-            answer = Math.max(answer, user.cnt);
-
-            for (int i = 0; i < dungeons.length; i++) {
-                boolean[] tempVisited = Arrays.copyOf(user.visited, dungeons.length);
-                if (!tempVisited[i] && user.k >= dungeons[i][0]) {
-                    tempVisited[i] = true;
-                    queue.add(new User(user.k - dungeons[i][1], user.cnt + 1, tempVisited));
-                }
-            }
-        }
+        dfs(0, k, dungeons,0);
 
         return answer;
+    }
+
+    public void dfs(int num, int k, int[][] dungeons, int count){
+
+        for(int i=0;i<dungeons.length;i++){
+            if(!visited[i] && k >= dungeons[i][0]){
+                visited[i] = true;
+                dfs(num+1, k - dungeons[i][1], dungeons, count+1);
+                visited[i] = false;
+            }
+        }
+        answer = Math.max(answer, count);
     }
 }
