@@ -10,6 +10,8 @@ public class Main {
 
         if((aAge >= 19 && aGender == 'M') || (bAge>=19 && bGender == 'M')){
             System.out.println(1);
+        }else{
+            System.out.println(0);
         }
     }
 }
