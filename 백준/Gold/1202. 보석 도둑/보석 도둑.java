@@ -1,52 +1,55 @@
 import java.util.*;
 
-public class Main{
-    public static void main(String[] args) {
+public class Main {
+    public static void main(String[] args){
+       //System.out.println(solution(new int[][]{{3,2},{6,4},{4,7},{1,4}}, new int[][]{{4,2},{4,2},{2,4}}));
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
         int K = sc.nextInt();
-        List<Jewelry> jewelryList = new ArrayList<>();
-
-        for(int i = 0; i < N; i++){
-            int M = sc.nextInt();
-            int V = sc.nextInt();
-            jewelryList.add(new Jewelry(M, V));
+        List<Target> targetList = new ArrayList<>();
+        for(int i=0;i<N;i++){
+            int m = sc.nextInt();
+            int v = sc.nextInt();
+            targetList.add(new Target(m,v));
+        }
+        List<Integer> bagList = new ArrayList<>();
+        for(int i=0;i<K;i++){
+            int bag = sc.nextInt();
+            bagList.add(bag);
         }
 
-        Collections.sort(jewelryList, (j1, j2) -> {
-            if(j1.m != j2.m) return Integer.compare(j1.m, j2.m);
-            return Integer.compare(j1.v, j2.v);
+        Collections.sort(targetList,(a, b) -> {
+            if (a.m != b.m) return Integer.compare(a.m, b.m);
+            return Integer.compare(a.v, b.v);
         });
 
-        List<Integer> bagList = new ArrayList<>();
-        for(int i = 0; i < K; i++){
-            bagList.add(sc.nextInt());
-        }
         Collections.sort(bagList);
 
-        int index = 0;
+        PriorityQueue<Target> queue = new PriorityQueue<>((j1, j2) -> Integer.compare(j2.v, j1.v));
+
         long answer = 0;
-
-        PriorityQueue<Jewelry> jewelries = new PriorityQueue<>((j1, j2) -> Integer.compare(j2.v, j1.v));
-
-        for(int i = 0; i < K; i++){
-            while(index < N && jewelryList.get(index).m <= bagList.get(i)){
-                jewelries.offer(jewelryList.get(index++));
+        int index=0;
+        for(int i=0;i<K;i++){
+            while(index<N && bagList.get(i) >= targetList.get(index).m){
+                queue.offer(targetList.get(index++));
             }
 
-            if(!jewelries.isEmpty()){
-                answer += jewelries.poll().v;
+            if(!queue.isEmpty()){
+                answer+=queue.poll().v;
             }
+
         }
-
         System.out.println(answer);
     }
 
-    public static class Jewelry {
-        int m, v;
-        public Jewelry(int m, int v){
+    public static class Target{
+        int m,v;
+        public Target(int m,int v){
             this.m = m;
             this.v = v;
         }
     }
+
+
+
 }
