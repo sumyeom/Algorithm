@@ -40,6 +40,7 @@ class Solution {
             if(!visited[nx][ny] && board[nx][ny] == word.charAt(index)){
                 visited[nx][ny] = true;
                 dfs(nx,ny, board, word, result+word.charAt(index),index+1);
+                if(answer) return;
                 visited[nx][ny] = false;
             }
         }
