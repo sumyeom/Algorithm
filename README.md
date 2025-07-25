@@ -15,4 +15,24 @@ This is an auto push repository for Baekjoon Online Judge created with [Baekjoon
 |  |
 | ------- |
 | [0070-climbing-stairs](https://github.com/sumyeom/Algorithm/tree/master/0070-climbing-stairs) |
+## Array
+|  |
+| ------- |
+| [0079-word-search](https://github.com/sumyeom/Algorithm/tree/master/0079-word-search) |
+## String
+|  |
+| ------- |
+| [0079-word-search](https://github.com/sumyeom/Algorithm/tree/master/0079-word-search) |
+## Backtracking
+|  |
+| ------- |
+| [0079-word-search](https://github.com/sumyeom/Algorithm/tree/master/0079-word-search) |
+## Depth-First Search
+|  |
+| ------- |
+| [0079-word-search](https://github.com/sumyeom/Algorithm/tree/master/0079-word-search) |
+## Matrix
+|  |
+| ------- |
+| [0079-word-search](https://github.com/sumyeom/Algorithm/tree/master/0079-word-search) |
 <!---LeetCode Topics End-->
