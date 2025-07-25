@@ -31,8 +31,21 @@ This is an auto push repository for Baekjoon Online Judge created with [Baekjoon
 |  |
 | ------- |
 | [0079-word-search](https://github.com/sumyeom/Algorithm/tree/master/0079-word-search) |
+| [0094-binary-tree-inorder-traversal](https://github.com/sumyeom/Algorithm/tree/master/0094-binary-tree-inorder-traversal) |
 ## Matrix
 |  |
 | ------- |
 | [0079-word-search](https://github.com/sumyeom/Algorithm/tree/master/0079-word-search) |
+## Stack
+|  |
+| ------- |
+| [0094-binary-tree-inorder-traversal](https://github.com/sumyeom/Algorithm/tree/master/0094-binary-tree-inorder-traversal) |
+## Tree
+|  |
+| ------- |
+| [0094-binary-tree-inorder-traversal](https://github.com/sumyeom/Algorithm/tree/master/0094-binary-tree-inorder-traversal) |
+## Binary Tree
+|  |
+| ------- |
+| [0094-binary-tree-inorder-traversal](https://github.com/sumyeom/Algorithm/tree/master/0094-binary-tree-inorder-traversal) |
 <!---LeetCode Topics End-->
