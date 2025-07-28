@@ -20,7 +20,7 @@ public class Main {
         }
 
         for(int i=2;i<=N;i++){
-            dp[i] = Math.max(dp[i-1]+arr[i], dp[i]+arr[i]);
+            dp[i] = Math.max(dp[i-1]+arr[i], arr[i]);
         }
 
         Arrays.sort(dp);
