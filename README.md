@@ -32,6 +32,7 @@ This is an auto push repository for Baekjoon Online Judge created with [Baekjoon
 | ------- |
 | [0079-word-search](https://github.com/sumyeom/Algorithm/tree/master/0079-word-search) |
 | [0094-binary-tree-inorder-traversal](https://github.com/sumyeom/Algorithm/tree/master/0094-binary-tree-inorder-traversal) |
+| [0098-validate-binary-search-tree](https://github.com/sumyeom/Algorithm/tree/master/0098-validate-binary-search-tree) |
 ## Matrix
 |  |
 | ------- |
@@ -44,8 +45,14 @@ This is an auto push repository for Baekjoon Online Judge created with [Baekjoon
 |  |
 | ------- |
 | [0094-binary-tree-inorder-traversal](https://github.com/sumyeom/Algorithm/tree/master/0094-binary-tree-inorder-traversal) |
+| [0098-validate-binary-search-tree](https://github.com/sumyeom/Algorithm/tree/master/0098-validate-binary-search-tree) |
 ## Binary Tree
 |  |
 | ------- |
 | [0094-binary-tree-inorder-traversal](https://github.com/sumyeom/Algorithm/tree/master/0094-binary-tree-inorder-traversal) |
+| [0098-validate-binary-search-tree](https://github.com/sumyeom/Algorithm/tree/master/0098-validate-binary-search-tree) |
+## Binary Search Tree
+|  |
+| ------- |
+| [0098-validate-binary-search-tree](https://github.com/sumyeom/Algorithm/tree/master/0098-validate-binary-search-tree) |
 <!---LeetCode Topics End-->
