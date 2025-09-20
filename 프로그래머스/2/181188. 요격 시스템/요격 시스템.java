@@ -4,16 +4,13 @@ class Solution {
         int answer = 0;
 
         Arrays.sort(targets, (a, b) ->  a[1] - b[1]);
-
-        int end = 0;
-        for (int i = 0; i < targets.length; i++) {
-            int s =  targets[i][0];
-            int e = targets[i][1];
-
-            if(s < end){
+        double first = targets[0][1] - 0.3;
+        answer++;
+        for(int i = 1; i < targets.length; i++) {
+            if(targets[i][0] < first && first < targets[i][1]) {
                 continue;
             }else{
-                end = e;
+                first = targets[i][1] - 0.3;
                 answer++;
             }
         }
