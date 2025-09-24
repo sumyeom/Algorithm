@@ -34,14 +34,18 @@ public class Main {
         if(cnt == N/2){
             for(int i=0;i<N-1;i++) {
                 for(int j=i+1;j<N;j++){
-                    if(selected[i] && selected[j]){
+                    if(selected[i] == true && selected[j] == true){
                         sumStart += map[i][j] + map[j][i];
-                    }else if(!selected[i] && !selected[j]){
+                    }else if(selected[i] == false && selected[j] == false){
                         sumLink += map[i][j] + map[j][i];
                     }
                 }
             }
             int val = Math.abs(sumStart - sumLink);
+            if(val == 0){
+                System.out.println(0);
+                System.exit(0);
+            }
             answer = Math.min(answer, Math.abs(sumStart - sumLink));
             return;
         }
