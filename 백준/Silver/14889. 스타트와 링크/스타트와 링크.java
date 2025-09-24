@@ -1,5 +1,6 @@
-
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main {
@@ -8,21 +9,22 @@ public class Main {
     static int[][] map;
     static int answer = Integer.MAX_VALUE;
     public static void main(String[] args) throws IOException {
-       Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-       N = sc.nextInt();
-       selected = new boolean[N];
+        N = Integer.parseInt(br.readLine());
+        selected = new boolean[N];
 
-       // 능력 입력
-       map = new int[N][N];
-       for(int i=0;i<N;i++){
-           for(int j=0;j<N;j++){
-               map[i][j] = sc.nextInt();
-           }
-       }
+        // 능력 입력
+        map = new int[N][N];
+        for(int i=0;i<N;i++){
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            for(int j=0;j<N;j++){
+                map[i][j] = Integer.parseInt(st.nextToken());
+            }
+        }
 
-       dfs(0, 0);
-       System.out.println(answer);
+        dfs(0, 0);
+        System.out.println(answer);
     }
 
     public static void dfs(int start, int cnt){
@@ -38,10 +40,6 @@ public class Main {
                 }
             }
             int val = Math.abs(sumStart - sumLink);
-            if(val == 0){
-                System.out.println(0);
-                System.exit(0);
-            }
             answer = Math.min(answer, Math.abs(sumStart - sumLink));
             return;
         }
