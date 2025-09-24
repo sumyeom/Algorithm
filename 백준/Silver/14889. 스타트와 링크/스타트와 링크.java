@@ -23,7 +23,9 @@ public class Main {
             }
         }
 
-        dfs(0, 0);
+        selected[0] = true;
+        dfs(1, 1);
+
         System.out.println(answer);
     }
 
